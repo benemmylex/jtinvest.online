@@ -61,10 +61,6 @@
                                 <label>Branch</label>
                                 <input class="form-control" value="<?= $this->Util_model->get_option('branch') ?>" name="branch" >
                             </div>
-                            <div class="form-group">
-                                <label>Beneficiary reference</label>
-                                <input class="form-control" value="<?= $this->Util_model->get_option('beneficiary_reference') ?>" name="beneficiary_reference" >
-                            </div>
                             <button class="btn btn-success btn-block" type="submit">Save Options</button>
                         </div>
                         <?php echo form_close(); ?>
