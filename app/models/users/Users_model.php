@@ -64,8 +64,8 @@ class Users_model extends CI_Model
                 if ($send['return']) {
                     $this->session->set_flashdata('msg', alert_msg("<i class='fa fa-check-circle'></i> Email verification link and login details has been sent to <b>$email</b>", "alert-success", 1));
                 } else {
-                    $this->session->set_flashdata('msg', alert_msg("<i class='fa fa-times-circle'></i> $send[return]", "alert-danger", 1));
-                    $this->session->set_flashdata('msg', alert_msg("<i class='fa fa-times-circle'></i> Error sending verification link to <b>$email</b>", "alert-danger", 1));
+                    $this->session->set_flashdata('msg', alert_msg("<i class='fa fa-times-circle'></i> Mail Error: $send[return]", "alert-danger", 1));
+                    //$this->session->set_flashdata('msg', alert_msg("<i class='fa fa-times-circle'></i> Error sending verification link to <b>$email</b>", "alert-danger", 1));
                 }
             }
         } else {
