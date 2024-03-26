@@ -170,10 +170,6 @@
                                     <label>Branch</label>
                                     <input class="form-control" value="<?= $this->Util_model->get_option('branch') ?>" readonly>
                                 </div>
-                                <div class="form-group">
-                                    <label>Beneficiary reference</label>
-                                    <input class="form-control" value="<?= $this->Util_model->get_option('beneficiary_reference') ?>" readonly>
-                                </div>
                             </div>
                         </div>
                     </div>

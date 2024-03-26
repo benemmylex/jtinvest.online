@@ -174,10 +174,6 @@
                                                                 <input class="form-control" name="branch">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>Beneficiary reference<span class="required">*</span></label>
-                                                                <input class="form-control" name="beneficiary_reference">
-                                                            </div>
-                                                            <div class="form-group">
                                                                 <label>Amount<span class="required">*</span></label>
                                                                 <input class="form-control" name="bank_amount" type="number" step="0.01">
                                                                 <small class="text-muted">Should not be less than 100
