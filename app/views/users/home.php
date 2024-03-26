@@ -13,8 +13,11 @@
         <div class="row">
             <?php if ($this->Util_model->get_info("user_profile", "verified", "WHERE uid=".$this->session->userdata(UID)) == 0) : ?>
             <div class="col-xs-12">
-                <div class="alert alert-danger">
+                <!-- <div class="alert alert-danger">
                     Your account is not yet verified. <a href="<?php echo base_url(); ?>users/send_email_verification_link/<?php echo $this->session->userdata(UID); ?>">Resend Verification Link</a>
+                </div> -->
+                <div class="alert alert-info h2">
+                    Welcome to <?= $SITE_TITLE ?>
                 </div>
             </div>
             <?php endif; ?>
