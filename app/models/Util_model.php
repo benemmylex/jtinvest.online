@@ -363,7 +363,7 @@ class Util_model extends CI_Model{
 		if (mail($to, $subject, $message, $headers)) {
 			 return array("return"=>true,"msg"=>"Mail sent successfully to <b>$to</b>");
 		} else {
-			$this->session->set_flashdata('msg', alert_msg("<i class='fa fa-times-circle'></i>".$this->email->print_debugger(), "alert-danger", 1));
+			$this->session->set_flashdata('msg', alert_msg("<i class='fa fa-times-circle'></i>Email Error: ".$this->email->print_debugger(), "alert-danger", 1));
 			return array("return"=>false,"msg"=>$this->email->print_debugger());   
 		}
 	}
