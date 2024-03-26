@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li class="<?php echo ($tab == 'newsletter') ? 'active' : ''; ?>">
-                    <a href="<?php echo base_url(); ?>admin/newsletter">
+                    <a target="_blank" href="https://webmail.jtinvest.online">
                         <i class="fa fa-envelope"></i> <span>Newsletter</span>
                     </a>
                 </li>
