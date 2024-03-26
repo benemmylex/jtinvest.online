@@ -363,7 +363,9 @@ class Util_model extends CI_Model{
 		if (mail($to, $subject, $message, $headers)) {
 			 return array("return"=>true,"msg"=>"Mail sent successfully to <b>$to</b>");
 		} else {
-			 return array("return"=>false,"msg"=>$this->email->print_debugger());      
+			echo $this->email->print_debugger();
+			 return array("return"=>false,"msg"=>$this->email->print_debugger());   
+
 		}
 	}
 	
