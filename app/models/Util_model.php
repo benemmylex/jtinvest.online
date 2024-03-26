@@ -327,43 +327,49 @@ class Util_model extends CI_Model{
 	}
 
     public function send_mail ($from,$to,$subject,$message,$label=SITE_TITLE,$attatchments=NULL,$cc='',$bc='',$type='html') {
-		  $this->load->library('email');
-            /*$config = array();
-            $config['protocol'] = 'smtp';
-            $config['smtp_host'] = 'smtp.hostinger.com';
-            $config['smtp_user'] = 'support@drip2drop.com';
-            $config['smtp_pass'] = 's5pp4rt';
-            $config['smtp_port'] = 25;
-            $this->email->initialize($config);*/
-
-		  /*$this->email->set_mailtype($type); 
-		  $this->email->from($from, SITE_TITLE);
-		  $this->email->to($to);
-		  $this->email->subject($subject);
-		  $this->email->message($message);
-         if ($attatchments != NULL) {
-             if (is_array($attatchments)) {
-                 $attatchment = "";
-                 foreach ($attatchments as $attatch) {
-                     $this->email->attach(FCPATH . $attatch);
-                 }
-             } else {
-                 $this->email->attach(FCPATH . $attatchments);
-             }
-         }*/
-		  
-		$subject = $subject;
+		$config = array();
+		$config['protocol'] = 'smtp';
+		$config['smtp_host'] = 'jtinvest.online';
+		$config['smtp_user'] = 'support@jtinvest.online';
+		$config['smtp_pass'] = 'Omo4real@';
+		$config['smtp_port'] = 465;
+		//$this->email->initialize($config);
+		
+		$this->email->set_mailtype($type); 
+		$this->email->from($from, SITE_TITLE);
+		$this->email->to($to);
+		$this->email->subject($subject);
+		$this->email->message($message);
+		if ($attatchments != NULL) {
+			if (is_array($attatchments)) {
+				$attatchment = "";
+				foreach ($attatchments as $attatch) {
+					$this->email->attach(FCPATH . $attatch);
+				}
+			} else {
+				$this->email->attach(FCPATH . $attatchments);
+			}
+		}
+		$this->load->library('email', $config);
+		
+		/*$subject = $subject;
 		$message = $message;
 		
 		$headers = "From: $label <$from>" . PHP_EOL;
 		$headers .= "Reply-To: ".SITE_TITLE." <$from>" . PHP_EOL;
 		$headers .= "MIME-Version: 1.0". PHP_EOL;
-		$headers .= "Content-Type: text/html; charset=ISO-8859-1". PHP_EOL;
+		$headers .= "Content-Type: text/html; charset=ISO-8859-1". PHP_EOL;*/
 
-		if (mail($to, $subject, $message, $headers)) {
+		/* if (mail($to, $subject, $message, $headers)) {
 			 return array("return"=>true,"msg"=>"Mail sent successfully to <b>$to</b>");
 		} else {
 			 return array("return"=>false,"msg"=>$this->email->print_debugger());      
+		} */
+
+		if ($this->email->send()) {
+			return array("return"=>true,"msg"=>"Mail sent successfully to <b>$to</b>");
+		} else {
+			return array("return"=>false,"msg"=>$this->email->print_debugger());      
 		}
 	}
 	
