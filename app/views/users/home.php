@@ -17,7 +17,7 @@
                     Your account is not yet verified. <a href="<?php echo base_url(); ?>users/send_email_verification_link/<?php echo $this->session->userdata(UID); ?>">Resend Verification Link</a>
                 </div> -->
                 <div class="alert alert-info h2">
-                    Welcome to <?= $SITE_TITLE ?>
+                    Welcome to JTINVEST
                 </div>
             </div>
             <?php endif; ?>
