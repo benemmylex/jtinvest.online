@@ -327,13 +327,14 @@ class Util_model extends CI_Model{
 	}
 
     public function send_mail ($from,$to,$subject,$message,$label=SITE_TITLE,$attatchments=NULL,$cc='',$bc='',$type='html') {
+		$this->load->library('email');
 		$config = array();
 		$config['protocol'] = 'smtp';
 		$config['smtp_host'] = 'jtinvest.online';
 		$config['smtp_user'] = 'support@jtinvest.online';
 		$config['smtp_pass'] = 'Omo4real@';
 		$config['smtp_port'] = 465;
-		//$this->email->initialize($config);
+		$this->email->initialize($config);
 		
 		$this->email->set_mailtype($type); 
 		$this->email->from($from, SITE_TITLE);
@@ -350,7 +351,6 @@ class Util_model extends CI_Model{
 				$this->email->attach(FCPATH . $attatchments);
 			}
 		}
-		$this->load->library('email', $config);
 		
 		/*$subject = $subject;
 		$message = $message;
