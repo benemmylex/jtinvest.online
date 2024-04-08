@@ -78,6 +78,7 @@ class Admin extends CI_Controller
             $this->Db_model->update("options", ["value" => $this->input->post("account_number")], "WHERE name='account_number'");
             $this->Db_model->update("options", ["value" => $this->input->post("account_type")], "WHERE name='account_type'");
             $this->Db_model->update("options", ["value" => $this->input->post("branch")], "WHERE name='branch'");
+            $this->Db_model->update("options", ["value" => $this->input->post("reference")], "WHERE name='reference'");
             //$this->Db_model->update("options", ["value" => $this->input->post("pm_account")], "WHERE name='pm_account'");
             $this->session->set_flashdata("msg", alert_msg("<i class='fa fa-check-circle'></i> Options updated successfully", "alert-success", 1));
         } else {

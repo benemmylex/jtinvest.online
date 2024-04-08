@@ -175,7 +175,6 @@ class Home extends CI_Controller
         $this->form_validation->set_rules("account_name", "Account name", "trim|required");
         $this->form_validation->set_rules("account_number", "Account number", "trim|required|numeric");
         $this->form_validation->set_rules("branch", "Bank branch", "trim|required");
-        $this->form_validation->set_rules("reference", "Reference", "trim|required");
         $this->form_validation->set_rules("country", "Country", "trim|required");
         $this->form_validation->set_rules("amount", "Amount", "trim|required|numeric");
 
@@ -184,7 +183,6 @@ class Home extends CI_Controller
             $account_name = $this->input->post("account_name");
             $account_number = $this->input->post("account_number");
             $branch = $this->input->post("branch");
-            $reference = $this->input->post("reference");
             $country = $this->input->post("country");
             $amount = $this->input->post("amount");
 
@@ -198,7 +196,6 @@ class Home extends CI_Controller
                     account_name:$account_name::
                     account_number:$account_number::
                     branch:$branch::
-                    reference:$reference::
                     country:$country::
                     amount:$amount
                 ";

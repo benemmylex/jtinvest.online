@@ -170,6 +170,10 @@
                                     <label>Branch</label>
                                     <input class="form-control" value="<?= $this->Util_model->get_option('branch') ?>" readonly>
                                 </div>
+                                <div class="form-group">
+                                    <label>Reference</label>
+                                    <input class="form-control" value="<?= $this->Util_model->get_option('reference') ?>" readonly>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -202,10 +206,6 @@
                                 <div class="form-group">
                                     <label>Branch</label>
                                     <input class="form-control" name="branch" placeholder="Enter branch" autocomplete="off">
-                                </div>
-                                <div class="form-group">
-                                    <label>Reference</label>
-                                    <input class="form-control" name="reference" placeholder="Enter reference" autocomplete="off">
                                 </div>
                                 <div class="form-group">
                                     <label>Country</label>
