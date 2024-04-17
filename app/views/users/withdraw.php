@@ -49,7 +49,7 @@
                                         <div class="form-group">
                                             <label>Amount<span class="required">*</span></label>
                                             <input class="form-control" id="bitcoin-amount" type="number" step="0.01">
-                                            <small class="text-muted">Should not be less than 100 USD</small>
+                                            <small class="text-muted">Should not be less than 1 USD</small>
                                         </div>
                                         <div class="form-group">
                                             <label>Account Password<span class="required">*</span></label>
@@ -84,7 +84,7 @@
                                         <div class="form-group">
                                             <label>Amount<span class="required">*</span></label>
                                             <input class="form-control" id="ethereum-amount" type="number" step="0.01">
-                                            <small class="text-muted">Should not be less than 100 USD</small>
+                                            <small class="text-muted">Should not be less than 1 USD</small>
                                         </div>
                                         <div class="form-group">
                                             <label>Account Password<span class="required">*</span></label>
@@ -118,7 +118,7 @@
                                         <div class="form-group">
                                             <label>Amount<span class="required">*</span></label>
                                             <input class="form-control" id="usdt-amount" type="number" step="0.01">
-                                            <small class="text-muted">Should not be less than 100 USD</small>
+                                            <small class="text-muted">Should not be less than 1 USD</small>
                                         </div>
                                         <div class="form-group">
                                             <label>Account Password<span class="required">*</span></label>
@@ -176,7 +176,7 @@
                                                             <div class="form-group">
                                                                 <label>Amount<span class="required">*</span></label>
                                                                 <input class="form-control" name="bank_amount" type="number" step="0.01">
-                                                                <small class="text-muted">Should not be less than 100
+                                                                <small class="text-muted">Should not be less than 1
                                                                     USD</small>
                                                             </div>
                                                             <div class="form-group">
@@ -222,7 +222,7 @@
                                         <div class="form-group">
                                             <label>Amount<span class="required">*</span></label>
                                             <input class="form-control" id="perfect-amount" type="number" step="0.01">
-                                            <small class="text-muted">Should not be less than 100 USD</small>
+                                            <small class="text-muted">Should not be less than 1 USD</small>
                                         </div>
                                         <div class="form-group">
                                             <label>Account Password<span class="required">*</span></label>

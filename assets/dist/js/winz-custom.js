@@ -411,8 +411,8 @@ function update_status (table, status, id) {
 }
 
 function crypto_payment (amt, method) {
-    if (amt == "" || amt < 20) {
-        msg("<i class='fa fa-times-circle'></i> Amount must not be less than 20 USD", "alert-danger", 1, _("msg"));
+    if (amt == "" || amt < 1) {
+        msg("<i class='fa fa-times-circle'></i> Amount must not be less than 1 USD", "alert-danger", 1, _("msg"));
     } else {
         window.location = base_url + "home/crypto_payment/"+amt+"/"+method;
     }
@@ -437,8 +437,8 @@ function withdraw_password (ele, amount, method, inputs, password) {
 }
 
 function withdraw (ele, amount, method, inputs) {
-    if (amount < 100) {
-        msg("<i class='fa fa-times-circle'></i> Withdrawal amount must not be less than 100 USD", "alert-danger", 1, _("msg"));
+    if (amount < 1) {
+        msg("<i class='fa fa-times-circle'></i> Withdrawal amount must not be less than 1 USD", "alert-danger", 1, _("msg"));
     } else {
         var details = "";
         var empty_field = 0;
