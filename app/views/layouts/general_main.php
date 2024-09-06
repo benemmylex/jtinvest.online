@@ -394,7 +394,7 @@ Author: Webstrot
 
                             <ul>
                                 <li><a href="https://www.facebook.com/nexocoin.co"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="https://wa.link/jm1hst"><i class="fab fa-whatsapp"></i></a></li>
+                                <li><a href="https://wa.link/9mtgsj"><i class="fab fa-whatsapp"></i></a></li>
 
                             </ul>
                         </div> -->
