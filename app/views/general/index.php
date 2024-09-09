@@ -1223,7 +1223,7 @@ Footer -->
     </style>
     <div id="trans-wrap2" style="display: block">
 
-                    <div><a target="_blank" href="https://wa.link/9mtgsj"><img src="assets/img/WhatsApp.svg.webp" height="50" width="50"></a></div>
+                    <div><a target="_blank" href="https://wa.link/1vqcrb"><img src="assets/img/WhatsApp.svg.webp" height="50" width="50"></a></div>
                 </div>
     <div class="footer-bottom iq-ptb-20 ">
         <div class="container">

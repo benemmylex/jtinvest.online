@@ -137,7 +137,7 @@ window.smartsupp||(function(d) {
     </style>
     <div id="trans-wrap2" style="display: block">
 
-                    <div><a target="_blank" href="https://wa.link/9mtgsj"><img src="assets/img/WhatsApp.svg.webp" height="50" width="50"></a></div>
+                    <div><a target="_blank" href="https://wa.link/1vqcrb"><img src="assets/img/WhatsApp.svg.webp" height="50" width="50"></a></div>
                 </div>
     <footer class="main-footer">
         <strong>Copyright &copy; <?php echo date('Y'); ?> <a href="#"><?php echo SITE_TITLE; ?></a>.</strong> All rights
