@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li class="<?php echo ($tab == 'newsletter') ? 'active' : ''; ?>">
-                    <a target="_blank" href="<?php echo base_url(); ?>admin/newsletter">
+                    <a href="<?php echo base_url(); ?>admin/newsletter">
                         <i class="fa fa-envelope"></i> <span>Newsletter</span>
                     </a>
                 </li>
