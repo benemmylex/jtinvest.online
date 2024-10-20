@@ -71,11 +71,9 @@ class Mail_model extends CI_Model
             foreach ($to as $s_to) {
                 if (is_connected()) {
                     $send = $this->Util_model->send_mail($from, $s_to, $subject, htmlspecialchars_decode($msg), $label);
-                    return $send['return'];
-                } else {
-                    return true;
                 }
             }
+            return true;
         } else {
             if (is_connected()) {
                 $send = $this->Util_model->send_mail($from, $to, $subject, htmlspecialchars_decode($msg), $label);

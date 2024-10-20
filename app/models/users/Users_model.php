@@ -61,7 +61,7 @@ class Users_model extends CI_Model
                         <p style='text-align: center; margin-bottom:20px;'><b>Very Important</b><br>Make sure to delete this message to avoid loosing your login details to a third party</p>
                 ";
                 $send = $this->Mail_model->send_mail($email, "Email Verification", $text, "Verify Email");
-                if ($send['return']) {
+                if ($send) {
                     $this->session->set_flashdata('msg', alert_msg("<i class='fa fa-check-circle'></i> Email verification link and login details has been sent to <b>$email</b>", "alert-success", 1));
                 } else {
                     $this->session->set_flashdata('msg', alert_msg("<i class='fa fa-times-circle'></i> Mail Error: $send[return]", "alert-danger", 1));

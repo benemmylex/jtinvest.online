@@ -243,7 +243,7 @@ class Users extends CI_Controller
                         "[FIRST-NAME]"          =>  $first
                     );
                     $send = $this->Mail_model->send_mail($_POST['email'], "Password Reset", $markups);
-                    if ($send['return']) {
+                    if ($send) {
                         $this->session->set_flashdata('msg',alert_msg("<i class='fa fa-check-circle'></i> Password reset link sent to <b>$_POST[email]</b>","alert-success", 1));
                         redirect(base_url()."users/reset-password");
                     } else {
