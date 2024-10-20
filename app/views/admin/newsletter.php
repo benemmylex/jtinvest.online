@@ -48,15 +48,15 @@
                             </div>
                             <div class="form-group">
                                 <label>Message</label>
-                                <form method="post" class="form-control">
-                                    <textarea name="message summernote"></textarea>
-                                </form>
+                                <div class="form-control">
+                                    <textarea name="message"></textarea>
+</div>
                             </div>
                             <div class="form-group">
                                 <label>Additional Text</label>
-                                <form method="post" class="form-control">
-                                    <textarea name="message summernote"></textarea>
-                                </form>
+                                <div class="form-control">
+                                    <textarea name="additional_text"></textarea>
+</div>
                             </div>
                             <label>&nbsp;</label>
                             <button class="btn btn-success btn-block" type="submit">Send Message</button>

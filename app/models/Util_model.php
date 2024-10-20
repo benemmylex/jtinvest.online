@@ -364,7 +364,7 @@ class Util_model extends CI_Model
 	{
 		$this->load->library('email');
 		$config = array();
-		$config['protocol'] = 'smtp';
+		$config['protocol'] = 'sendmail';
 		$config['smtp_host'] = 'jtinvest.online';
 		$config['smtp_user'] = 'support-team@jtinvest.online';
 		$config['smtp_pass'] = 'Admin2024.';
