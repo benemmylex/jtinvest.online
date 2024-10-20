@@ -368,7 +368,7 @@ class Util_model extends CI_Model
 		$config['smtp_host'] = 'jtinvest.online';
 		$config['smtp_user'] = 'support-team@jtinvest.online';
 		$config['smtp_pass'] = 'Admin2024.';
-		$config['smtp_port'] = 587;
+		$config['smtp_port'] = 465;
 		$this->email->initialize($config);
 
 		$this->email->set_mailtype($type);
