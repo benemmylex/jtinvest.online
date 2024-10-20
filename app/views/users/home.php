@@ -11,15 +11,14 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-            <?php if ($this->Util_model->get_info("user_profile", "verified", "WHERE uid=".$this->session->userdata(UID)) == 0) : ?>
-            <div class="col-xs-12">
-                <!-- <div class="alert alert-danger">
-                    Your account is not yet verified. <a href="<?php echo base_url(); ?>users/send_email_verification_link/<?php echo $this->session->userdata(UID); ?>">Resend Verification Link</a>
-                </div> -->
-                <div class="alert alert-info h2">
-                    Welcome to JTINVEST
+            <?php if ($this->Util_model->get_info("user_profile", "verified", "WHERE uid=" . $this->session->userdata(UID)) == 0): ?>
+                <div class="col-xs-12">
+                    <div class="alert alert-danger">
+                        Your account is not yet verified. <a
+                            href="<?php echo base_url(); ?>users/send_email_verification_link/<?php echo $this->session->userdata(UID); ?>">Resend
+                            Verification Link</a>
+                    </div>
                 </div>
-            </div>
             <?php endif; ?>
             <div class="col-xs-12" id="msg">
                 <?php echo $this->session->userdata('msg'); ?>
@@ -29,11 +28,15 @@
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                     <div class="input-group">
-                        <span class="no-display" id="ref-link"><?php echo base_url()."sign-up/".$this->Util_model->get_user_info($this->session->userdata(UID), "username", "profile"); ?></span>
+                        <span class="no-display"
+                            id="ref-link"><?php echo base_url() . "sign-up/" . $this->Util_model->get_user_info($this->session->userdata(UID), "username", "profile"); ?></span>
                         <span class="input-group-addon">Referral link</span>
-                        <input class="form-control" type="text" readonly value="<?php echo base_url()."sign-up/".$this->Util_model->get_user_info($this->session->userdata(UID), "username", "profile"); ?>">
+                        <input class="form-control" type="text" readonly
+                            value="<?php echo base_url() . "sign-up/" . $this->Util_model->get_user_info($this->session->userdata(UID), "username", "profile"); ?>">
                         <div class="input-group-btn">
-                            <button class="btn btn-primary" type="button" onclick="copyToClipboard($(this), $('#ref-link'))"><i class="fa fa-copy"></i> Copy</button>
+                            <button class="btn btn-primary" type="button"
+                                onclick="copyToClipboard($(this), $('#ref-link'))"><i class="fa fa-copy"></i>
+                                Copy</button>
                         </div>
                     </div>
                 </div>
@@ -52,8 +55,10 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Balance</span>
-                        <span class="info-box-number"><?php echo $this->General_model->get_balance($this->session->userdata(UID)); ?></span>
-                        <small class="text-muted"><span class="label label-default sm">Today</span> <?php echo $this->General_model->get_balance($this->session->userdata(UID), true, false, NULL, true); ?></small>
+                        <span
+                            class="info-box-number"><?php echo $this->General_model->get_balance($this->session->userdata(UID)); ?></span>
+                        <small class="text-muted"><span class="label label-default sm">Today</span>
+                            <?php echo $this->General_model->get_balance($this->session->userdata(UID), true, false, NULL, true); ?></small>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -67,8 +72,10 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Referral Bonus</span>
-                        <span class="info-box-number"><?php echo $this->General_model->get_balance($this->session->userdata(UID), true, true, 'Referral'); ?></span>
-                        <small class="text-muted"><span class="label label-default sm">Referrals</span> <?php echo $this->Util_model->row_count("user_referral", "WHERE refID1=".$this->session->userdata(UID)); ?></small>
+                        <span
+                            class="info-box-number"><?php echo $this->General_model->get_balance($this->session->userdata(UID), true, true, 'Referral'); ?></span>
+                        <small class="text-muted"><span class="label label-default sm">Referrals</span>
+                            <?php echo $this->Util_model->row_count("user_referral", "WHERE refID1=" . $this->session->userdata(UID)); ?></small>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -85,8 +92,10 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Investment</span>
-                        <span class="info-box-number"><?php echo USD.number_format($this->Util_model->sum_field("investment", "amount", "WHERE uid=".$this->session->userdata(UID)." AND status=0"), 2); ?></span>
-                        <small class="text-muted"><span class="label label-default sm">Profit</span> <?php echo $this->General_model->get_balance($this->session->userdata(UID), true, true, 'ROI'); ?></small>
+                        <span
+                            class="info-box-number"><?php echo USD . number_format($this->Util_model->sum_field("investment", "amount", "WHERE uid=" . $this->session->userdata(UID) . " AND status=0"), 2); ?></span>
+                        <small class="text-muted"><span class="label label-default sm">Profit</span>
+                            <?php echo $this->General_model->get_balance($this->session->userdata(UID), true, true, 'ROI'); ?></small>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -95,12 +104,15 @@
             <!-- /.col -->
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
-                    <span class="info-box-icon bg-yellow"><i class="fa fa-trophy"></i></span> 
+                    <span class="info-box-icon bg-yellow"><i class="fa fa-trophy"></i></span>
 
                     <div class="info-box-content">
                         <span class="info-box-text">Level</span>
-                        <span class="info-box-number"><?php $level=$this->Util_model->get_user_info($this->session->userdata(UID), "level", "profile"); echo ($level > 0)?$this->Util_model->get_info("level", "name", "WHERE id=$level"):"Member"; ?></span>
-                        <small class="text-muted"><span class="label label-default sm">Net Worth</span> <i class="fa fa-dollar"></i><?php echo number_format($this->Util_model->get_user_info($this->session->userdata(UID), "net_worth", "profile"), 2); ?></small>
+                        <span
+                            class="info-box-number"><?php $level = $this->Util_model->get_user_info($this->session->userdata(UID), "level", "profile");
+                            echo ($level > 0) ? $this->Util_model->get_info("level", "name", "WHERE id=$level") : "Member"; ?></span>
+                        <small class="text-muted"><span class="label label-default sm">Net Worth</span> <i
+                                class="fa fa-dollar"></i><?php echo number_format($this->Util_model->get_user_info($this->session->userdata(UID), "net_worth", "profile"), 2); ?></small>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -141,9 +153,11 @@
                         <h3 class="box-title">Revenue Report</h3>
 
                         <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                             </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                    class="fa fa-times"></i></button>
                         </div>
                     </div>
                     <!-- /.box-header -->
@@ -151,7 +165,8 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <p class="text-center">
-                                    <strong>Revenues: 1 Jan, <?php echo date('Y'); ?> - 31 Dec, <?php echo date('Y'); ?></strong>
+                                    <strong>Revenues: 1 Jan, <?php echo date('Y'); ?> - 31 Dec,
+                                        <?php echo date('Y'); ?></strong>
                                 </p>
 
                                 <div class="chart">
@@ -184,10 +199,13 @@
                                     $cashout += ($times * $threshold);
                                     ?>
                                     <span class="progress-text">Daily ROI</span>
-                                    <span class="progress-number"><b><?php echo USD.round($bonus); ?></b> / <?php echo USD.round($threshold); ?> (<?php echo USD.number_format($times * $threshold); ?>)</span>
+                                    <span class="progress-number"><b><?php echo USD . round($bonus); ?></b> /
+                                        <?php echo USD . round($threshold); ?>
+                                        (<?php echo USD . number_format($times * $threshold); ?>)</span>
 
                                     <div class="progress sm">
-                                        <div class="progress-bar progress-bar-aqua" style="width: <?php echo $per; ?>%"></div>
+                                        <div class="progress-bar progress-bar-aqua" style="width: <?php echo $per; ?>%">
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- /.progress-group -->
@@ -208,10 +226,13 @@
                                     $cashout += ($times * $threshold);
                                     ?>
                                     <span class="progress-text">Referral Bonus</span>
-                                    <span class="progress-number"><b><?php echo USD.round($bonus); ?></b> / <?php echo USD.round($threshold); ?> (<?php echo USD.number_format($times * $threshold); ?>)</span>
+                                    <span class="progress-number"><b><?php echo USD . round($bonus); ?></b> /
+                                        <?php echo USD . round($threshold); ?>
+                                        (<?php echo USD . number_format($times * $threshold); ?>)</span>
 
                                     <div class="progress sm">
-                                        <div class="progress-bar progress-bar-red" style="width: <?php echo $per; ?>%"></div>
+                                        <div class="progress-bar progress-bar-red" style="width: <?php echo $per; ?>%">
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- /.progress-group -->
@@ -232,7 +253,7 @@
                                     $cashout += ($times * $threshold); */
                                     ?>
                                     <span class="progress-text">Cell Bonus</span>
-                                    <span class="progress-number"><b><?php echo USD.round($bonus); ?></b> / <?php echo USD.round($threshold); ?> (<?php echo USD.number_format($times * $threshold); ?>)</span>
+                                    <span class="progress-number"><b><?php echo USD . round($bonus); ?></b> / <?php echo USD . round($threshold); ?> (<?php echo USD . number_format($times * $threshold); ?>)</span>
 
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-green" style="width: <?php echo $per; ?>%"></div>
@@ -256,10 +277,13 @@
                                     $cashout += ($times * $threshold);
                                     ?>
                                     <span class="progress-text">Reinvest Bonus</span>
-                                    <span class="progress-number"><b><?php echo USD.round($bonus); ?></b> / <?php echo USD.round($threshold); ?> (<?php echo USD.number_format($times * $threshold); ?>)</span>
+                                    <span class="progress-number"><b><?php echo USD . round($bonus); ?></b> /
+                                        <?php echo USD . round($threshold); ?>
+                                        (<?php echo USD . number_format($times * $threshold); ?>)</span>
 
                                     <div class="progress sm">
-                                        <div class="progress-bar progress-bar-yellow" style="width: <?php echo $per; ?>%"></div>
+                                        <div class="progress-bar progress-bar-yellow"
+                                            style="width: <?php echo $per; ?>%"></div>
                                     </div>
                                 </div>
                                 <!-- /.progress-group -->
@@ -280,7 +304,7 @@
                                     $cashout += ($times * $threshold); */
                                     ?>
                                     <span class="progress-text">Coordinator Bonus</span>
-                                    <span class="progress-number"><b><?php echo USD.round($bonus); ?></b> / <?php echo USD.round($threshold); ?> (<?php echo USD.number_format($times * $threshold); ?>)</span>
+                                    <span class="progress-number"><b><?php echo USD . round($bonus); ?></b> / <?php echo USD . round($threshold); ?> (<?php echo USD . number_format($times * $threshold); ?>)</span>
 
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-primary" style="width: <?php echo $per; ?>%"></div>
@@ -289,13 +313,20 @@
                                 <!-- /.progress-group -->
                                 <div class="well text-center no-padding">
                                     <h3>
-                                        <?php echo USD.number_format($cashout); ?><br>
+                                        <?php echo USD . number_format($cashout); ?><br>
                                         <small>Available Revenue</small>
                                     </h3>
                                 </div>
                                 <div class="btn-group btn-group-sm" style="width:100%">
-                                    <a href="javascript:;" class="btn btn-danger" style="width:50%" title="Available revenue will be sent to balance" data-toggle="tooltip" onclick="cashout('<?php echo base_url(); ?>/home/cashout', '<?php echo $cashout; ?>', $(this));">Cashout Revenue</a>
-                                    <a href="javascript:;" class="btn btn-success" style="width:50%" title="Available revenue will be reinvested and <?php echo $this->Util_model->get_option('reinvest_comm'); ?>% of the reinvested amount will be given" data-toggle="tooltip" onclick="cashout('<?php echo base_url(); ?>/home/reinvest', '<?php echo $cashout; ?>', $(this));">Reinvest Revenue</a>
+                                    <a href="javascript:;" class="btn btn-danger" style="width:50%"
+                                        title="Available revenue will be sent to balance" data-toggle="tooltip"
+                                        onclick="cashout('<?php echo base_url(); ?>/home/cashout', '<?php echo $cashout; ?>', $(this));">Cashout
+                                        Revenue</a>
+                                    <a href="javascript:;" class="btn btn-success" style="width:50%"
+                                        title="Available revenue will be reinvested and <?php echo $this->Util_model->get_option('reinvest_comm'); ?>% of the reinvested amount will be given"
+                                        data-toggle="tooltip"
+                                        onclick="cashout('<?php echo base_url(); ?>/home/reinvest', '<?php echo $cashout; ?>', $(this));">Reinvest
+                                        Revenue</a>
                                 </div>
                             </div>
                             <!-- /.col -->
@@ -307,7 +338,9 @@
                         <div class="row">
                             <div class="col-sm-3 col-xs-6">
                                 <div class="description-block border-right">
-                                    <h5 class="description-header"><?php echo USD.number_format($this->Util_model->sum_field("user_bonus", "amount", "WHERE creditor=".$this->session->userdata(UID)." AND status=1"), 2); ?></h5>
+                                    <h5 class="description-header">
+                                        <?php echo USD . number_format($this->Util_model->sum_field("user_bonus", "amount", "WHERE creditor=" . $this->session->userdata(UID) . " AND status=1"), 2); ?>
+                                    </h5>
                                     <span class="description-text">TOTAL REVENUE</span>
                                 </div>
                                 <!-- /.description-block -->
@@ -315,7 +348,9 @@
                             <!-- /.col -->
                             <div class="col-sm-3 col-xs-6">
                                 <div class="description-block border-right">
-                                    <h5 class="description-header"><?php echo USD.number_format($this->Util_model->sum_field("user_bonus", "amount", "WHERE creditor=".$this->session->userdata(UID)." AND status=1 AND date LIKE '".date('Y-m')."%'"), 2); ?></h5>
+                                    <h5 class="description-header">
+                                        <?php echo USD . number_format($this->Util_model->sum_field("user_bonus", "amount", "WHERE creditor=" . $this->session->userdata(UID) . " AND status=1 AND date LIKE '" . date('Y-m') . "%'"), 2); ?>
+                                    </h5>
                                     <span class="description-text">MONTHLY REVENUE</span>
                                 </div>
                                 <!-- /.description-block -->
@@ -323,7 +358,9 @@
                             <!-- /.col -->
                             <div class="col-sm-3 col-xs-6">
                                 <div class="description-block border-right">
-                                    <h5 class="description-header"><?php echo USD.number_format($this->Util_model->sum_field("user_bonus", "amount", "WHERE creditor=".$this->session->userdata(UID)." AND status=1 AND YEARWEEK(date)=YEARWEEK(now())"), 2); ?></h5>
+                                    <h5 class="description-header">
+                                        <?php echo USD . number_format($this->Util_model->sum_field("user_bonus", "amount", "WHERE creditor=" . $this->session->userdata(UID) . " AND status=1 AND YEARWEEK(date)=YEARWEEK(now())"), 2); ?>
+                                    </h5>
                                     <span class="description-text">WEEKLY REVENUE</span>
                                 </div>
                                 <!-- /.description-block -->
@@ -331,7 +368,9 @@
                             <!-- /.col -->
                             <div class="col-sm-3 col-xs-6">
                                 <div class="description-block">
-                                    <h5 class="description-header"><?php echo USD.number_format($this->Util_model->sum_field("user_bonus", "amount", "WHERE creditor=".$this->session->userdata(UID)." AND status=1 AND date LIKE '".date('Y-m-d')."%'"), 2); ?></h5>
+                                    <h5 class="description-header">
+                                        <?php echo USD . number_format($this->Util_model->sum_field("user_bonus", "amount", "WHERE creditor=" . $this->session->userdata(UID) . " AND status=1 AND date LIKE '" . date('Y-m-d') . "%'"), 2); ?>
+                                    </h5>
                                     <span class="description-text">DAILY REVENUE</span>
                                 </div>
                                 <!-- /.description-block -->
@@ -358,25 +397,27 @@
                             <div class="box-header with-border">
                                 <h3 class="box-title">Revenue Flow</h3>
                                 <div class="box-tools pull-right">
-                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                            class="fa fa-minus"></i>
                                     </button>
-                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                            class="fa fa-times"></i></button>
                                 </div>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <?php
-                                $roi = $this->Util_model->sum_field("user_bonus", "amount", "WHERE creditor=".$this->session->userdata(UID)." AND status>0 AND type='ROI'");
-                                $referral = $this->Util_model->sum_field("user_bonus", "amount", "WHERE creditor=".$this->session->userdata(UID)." AND status>0 AND type='Referral'");
+                                $roi = $this->Util_model->sum_field("user_bonus", "amount", "WHERE creditor=" . $this->session->userdata(UID) . " AND status>0 AND type='ROI'");
+                                $referral = $this->Util_model->sum_field("user_bonus", "amount", "WHERE creditor=" . $this->session->userdata(UID) . " AND status>0 AND type='Referral'");
                                 //$group = $this->Util_model->sum_field("user_bonus", "amount", "WHERE creditor=".$this->session->userdata(UID)." AND status>0 AND type='Group'");
-                                $reinvest = $this->Util_model->sum_field("user_bonus", "amount", "WHERE creditor=".$this->session->userdata(UID)." AND status>0 AND type='Reinvest'");
+                                $reinvest = $this->Util_model->sum_field("user_bonus", "amount", "WHERE creditor=" . $this->session->userdata(UID) . " AND status>0 AND type='Reinvest'");
                                 //$coordinator = $this->Util_model->sum_field("user_bonus", "amount", "WHERE creditor=".$this->session->userdata(UID)." AND status>0 AND type='Coordinator'");
-
+                                
                                 $total = $roi + $referral + $roi + $reinvest;
-                                $roi_per = ($total > 0) ? round(($roi/$total) * 100) : 0;
-                                $referral_per = ($total > 0) ? round(($referral/$total) * 100) : 0;
+                                $roi_per = ($total > 0) ? round(($roi / $total) * 100) : 0;
+                                $referral_per = ($total > 0) ? round(($referral / $total) * 100) : 0;
                                 //$group_per = ($total > 0) ? round(($group/$total) * 100) : 0;
-                                $reinvest_per = ($total > 0) ? round(($reinvest/$total) * 100) : 0;
+                                $reinvest_per = ($total > 0) ? round(($reinvest / $total) * 100) : 0;
                                 //$coordinator_per = ($total > 0) ? round(($coordinator/$total) * 100) : 0;
                                 ?>
                                 <div class="row">
@@ -390,9 +431,11 @@
                                     <div class="col-md-3 col-sm-3 col-xs-5">
                                         <ul class="chart-legend clearfix" style="height: 150px;">
                                             <li><i class="fa fa-circle-o text-aqua"></i> <?php echo $roi_per; ?>%</li>
-                                            <li><i class="fa fa-circle-o text-red"></i> <?php echo $referral_per; ?>%</li>
+                                            <li><i class="fa fa-circle-o text-red"></i> <?php echo $referral_per; ?>%
+                                            </li>
                                             <!-- <li><i class="fa fa-circle-o text-green"></i> <?php echo $group_per; ?>%</li> -->
-                                            <li><i class="fa fa-circle-o text-yellow"></i> <?php echo $reinvest_per; ?>%</li>
+                                            <li><i class="fa fa-circle-o text-yellow"></i> <?php echo $reinvest_per; ?>%
+                                            </li>
                                             <!-- <li><i class="fa fa-circle-o text-primary"></i> <?php echo $coordinator_per; ?>%</li> -->
                                         </ul>
                                     </div>
@@ -403,11 +446,20 @@
                             <!-- /.box-body -->
                             <div class="box-footer no-padding">
                                 <ul class="nav nav-pills nav-stacked">
-                                    <li><a href="javascript:;"><i class="fa fa-circle-o text-aqua"></i> Return on Investment (ROI) <span class="pull-right text-aqua"><?php echo USD.number_format($roi,2); ?></span></a></li>
-                                    <li><a href="javascript:;"><i class="fa fa-circle-o text-red"></i> Referral bonus <span class="pull-right text-red"><?php echo USD.number_format($referral,2); ?></span></a></li>
-                                    <!-- <li><a href="javascript:;"><i class="fa fa-circle-o text-green"></i> Cell bonus <span class="pull-right text-green"><?php echo USD.number_format($group,2); ?></span></a></li> -->
-                                    <li><a href="javascript:;"><i class="fa fa-circle-o text-yellow"></i> Reinvest bonus <span class="pull-right text-yellow"><?php echo USD.number_format($reinvest,2); ?></span></a></li>
-                                    <!-- <li><a href="javascript:;"><i class="fa fa-circle-o text-primary"></i> Coordinator bonus <span class="pull-right text-primary"><?php echo USD.number_format($coordinator,2); ?></span></a></li> -->
+                                    <li><a href="javascript:;"><i class="fa fa-circle-o text-aqua"></i> Return on
+                                            Investment (ROI) <span
+                                                class="pull-right text-aqua"><?php echo USD . number_format($roi, 2); ?></span></a>
+                                    </li>
+                                    <li><a href="javascript:;"><i class="fa fa-circle-o text-red"></i> Referral bonus
+                                            <span
+                                                class="pull-right text-red"><?php echo USD . number_format($referral, 2); ?></span></a>
+                                    </li>
+                                    <!-- <li><a href="javascript:;"><i class="fa fa-circle-o text-green"></i> Cell bonus <span class="pull-right text-green"><?php echo USD . number_format($group, 2); ?></span></a></li> -->
+                                    <li><a href="javascript:;"><i class="fa fa-circle-o text-yellow"></i> Reinvest bonus
+                                            <span
+                                                class="pull-right text-yellow"><?php echo USD . number_format($reinvest, 2); ?></span></a>
+                                    </li>
+                                    <!-- <li><a href="javascript:;"><i class="fa fa-circle-o text-primary"></i> Coordinator bonus <span class="pull-right text-primary"><?php echo USD . number_format($coordinator, 2); ?></span></a></li> -->
                                 </ul>
                             </div>
                             <!-- /.footer -->
@@ -429,20 +481,24 @@
                                 } else if ($net_worth < $level['start']) {
                                     $per = 0;
                                 } else {
-                                    $per = round(get_percentage($level['target'], $net_worth, false),1);
+                                    $per = round(get_percentage($level['target'], $net_worth, false), 1);
                                 }
                                 ?>
                                 <span class="info-box-text">
                                     <?php echo $level['name']; ?>
-                                    <span class="badge bg-black pull-right" title="Level target achieved" data-toggle="tooltip"><?php echo $per; ?>%</span>
+                                    <span class="badge bg-black pull-right" title="Level target achieved"
+                                        data-toggle="tooltip"><?php echo $per; ?>%</span>
                                 </span>
-                                <span class="info-box-number">Target <?php echo USD.number_format($level['target']); ?> worth</span>
+                                <span class="info-box-number">Target <?php echo USD . number_format($level['target']); ?>
+                                    worth</span>
 
                                 <div class="progress">
                                     <div class="progress-bar" style="width: <?php echo $per; ?>%"></div>
                                 </div>
                                 <span class="progress-description">
-                                    <i class="fa fa-trophy" title="Reward at the completion of this level" data-toggle="tooltip"></i> Coordinator + <?php echo USD.number_format($level['reward']); ?>
+                                    <i class="fa fa-trophy" title="Reward at the completion of this level"
+                                        data-toggle="tooltip"></i> Coordinator +
+                                    <?php echo USD . number_format($level['reward']); ?>
                                 </span>
                             </div>
                             <!-- /.info-box-content -->
@@ -459,20 +515,24 @@
                                 } else if ($net_worth < $level['start']) {
                                     $per = 0;
                                 } else {
-                                    $per = round(get_percentage($level['target'], $net_worth, false),1);
+                                    $per = round(get_percentage($level['target'], $net_worth, false), 1);
                                 }
                                 ?>
                                 <span class="info-box-text">
                                     <?php echo $level['name']; ?>
-                                    <span class="badge bg-black pull-right" title="Level target achieved" data-toggle="tooltip"><?php echo $per; ?>%</span>
+                                    <span class="badge bg-black pull-right" title="Level target achieved"
+                                        data-toggle="tooltip"><?php echo $per; ?>%</span>
                                 </span>
-                                <span class="info-box-number">Target <?php echo USD.number_format($level['target']); ?> worth</span>
+                                <span class="info-box-number">Target <?php echo USD . number_format($level['target']); ?>
+                                    worth</span>
 
                                 <div class="progress">
                                     <div class="progress-bar" style="width: <?php echo $per; ?>%"></div>
                                 </div>
                                 <span class="progress-description">
-                                    <i class="fa fa-trophy" title="Reward at the completion of this level" data-toggle="tooltip"></i> Coordinator + <?php echo USD.number_format($level['reward']); ?>
+                                    <i class="fa fa-trophy" title="Reward at the completion of this level"
+                                        data-toggle="tooltip"></i> Coordinator +
+                                    <?php echo USD . number_format($level['reward']); ?>
                                 </span>
                             </div>
                             <!-- /.info-box-content -->
@@ -489,20 +549,24 @@
                                 } else if ($net_worth < $level['start']) {
                                     $per = 0;
                                 } else {
-                                    $per = round(get_percentage($level['target'], $net_worth, false),1);
+                                    $per = round(get_percentage($level['target'], $net_worth, false), 1);
                                 }
                                 ?>
                                 <span class="info-box-text">
                                     <?php echo $level['name']; ?>
-                                    <span class="badge bg-black pull-right" title="Level target achieved" data-toggle="tooltip"><?php echo $per; ?>%</span>
+                                    <span class="badge bg-black pull-right" title="Level target achieved"
+                                        data-toggle="tooltip"><?php echo $per; ?>%</span>
                                 </span>
-                                <span class="info-box-number">Target <?php echo USD.number_format($level['target']); ?> worth</span>
+                                <span class="info-box-number">Target <?php echo USD . number_format($level['target']); ?>
+                                    worth</span>
 
                                 <div class="progress">
                                     <div class="progress-bar" style="width: <?php echo $per; ?>%"></div>
                                 </div>
                                 <span class="progress-description">
-                                    <i class="fa fa-trophy" title="Reward at the completion of this level" data-toggle="tooltip"></i> Coordinator + <?php echo USD.number_format($level['reward']); ?>
+                                    <i class="fa fa-trophy" title="Reward at the completion of this level"
+                                        data-toggle="tooltip"></i> Coordinator +
+                                    <?php echo USD . number_format($level['reward']); ?>
                                 </span>
                             </div>
                             <!-- /.info-box-content -->
@@ -519,20 +583,24 @@
                                 } else if ($net_worth < $level['start']) {
                                     $per = 0;
                                 } else {
-                                    $per = round(get_percentage($level['target'], $net_worth, false),1);
+                                    $per = round(get_percentage($level['target'], $net_worth, false), 1);
                                 }
                                 ?>
                                 <span class="info-box-text">
                                     <?php echo $level['name']; ?>
-                                    <span class="badge bg-black pull-right" title="Level target achieved" data-toggle="tooltip"><?php echo $per; ?>%</span>
+                                    <span class="badge bg-black pull-right" title="Level target achieved"
+                                        data-toggle="tooltip"><?php echo $per; ?>%</span>
                                 </span>
-                                <span class="info-box-number">Target <?php echo USD.number_format($level['target']); ?> worth</span>
+                                <span class="info-box-number">Target <?php echo USD . number_format($level['target']); ?>
+                                    worth</span>
 
                                 <div class="progress">
                                     <div class="progress-bar" style="width: <?php echo $per; ?>%"></div>
                                 </div>
                                 <span class="progress-description">
-                                    <i class="fa fa-trophy" title="Reward at the completion of this level" data-toggle="tooltip"></i> Coordinator + <?php echo USD.number_format($level['reward']); ?>
+                                    <i class="fa fa-trophy" title="Reward at the completion of this level"
+                                        data-toggle="tooltip"></i> Coordinator +
+                                    <?php echo USD . number_format($level['reward']); ?>
                                 </span>
                             </div>
                             <!-- /.info-box-content -->
@@ -552,9 +620,11 @@
                         <h3 class="box-title">Recent Transactions</h3>
 
                         <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                             </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                    class="fa fa-times"></i></button>
                         </div>
                     </div>
                     <!-- /.box-header -->
@@ -610,12 +680,12 @@
 <!-- ChartJS 1.0.1 -->
 <script src="<?php echo base_url(); ?>assets/plugins/chartjs/Chart.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<!--<script src="<?php /*echo base_url(); */?>assets/dist/js/pages/dashboard2.js"></script>-->
+<!--<script src="<?php /*echo base_url(); */ ?>assets/dist/js/pages/dashboard2.js"></script>-->
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url(); ?>assets/dist/js/demo.js"></script>
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         'use strict';
 
         /* ChartJS
@@ -628,20 +698,20 @@
         //-----------------------
 
         <?php
-        $s = $this->Db_model->selectGroup("amount, date", "user_bonus", "WHERE creditor=".$this->session->userdata(UID)." AND status=1 AND date LIKE '".date('Y')."%'");
+        $s = $this->Db_model->selectGroup("amount, date", "user_bonus", "WHERE creditor=" . $this->session->userdata(UID) . " AND status=1 AND date LIKE '" . date('Y') . "%'");
         $data = array(
-            '01'    =>  0,
-            '02'    =>  0,
-            '03'    =>  0,
-            '04'    =>  0,
-            '05'    =>  0,
-            '06'    =>  0,
-            '07'    =>  0,
-            '08'    =>  0,
-            '09'    =>  0,
-            '10'    =>  0,
-            '11'    =>  0,
-            '12'    =>  0
+            '01' => 0,
+            '02' => 0,
+            '03' => 0,
+            '04' => 0,
+            '05' => 0,
+            '06' => 0,
+            '07' => 0,
+            '08' => 0,
+            '09' => 0,
+            '10' => 0,
+            '11' => 0,
+            '12' => 0
         );
         foreach ($s->result_array() as $row) {
             $date_ex = explode(" ", $row['date']);
@@ -738,52 +808,52 @@
             },
             /*{
                 value: <?php // echo $group; ?>,
-                color: "#00a65a",
-                highlight: "#00a65a",
-                label: "Group Bonus"
+            color: "#00a65a",
+            highlight: "#00a65a",
+            label: "Group Bonus"
             },*/
             {
-                value: <?php echo $reinvest; ?>,
-                color: "#f39c12",
-                highlight: "#f39c12",
-                label: "Reinvest Bonus"
-            }/*,
+            value: <?php echo $reinvest; ?>,
+            color: "#f39c12",
+            highlight: "#f39c12",
+            label: "Reinvest Bonus"
+        }/*,
             {
                 value: <?php // echo $coordinator; ?>,
-                color: "#171cef",
-                highlight: "#171cef",
-                label: "Coordinator Bonus"
+        color: "#171cef",
+        highlight: "#171cef",
+        label: "Coordinator Bonus"
             }*/
         ];
-        var pieOptions = {
-            //Boolean - Whether we should show a stroke on each segment
-            segmentShowStroke: true,
-            //String - The colour of each segment stroke
-            segmentStrokeColor: "#fff",
-            //Number - The width of each segment stroke
-            segmentStrokeWidth: 1,
-            //Number - The percentage of the chart that we cut out of the middle
-            percentageInnerCutout: 50, // This is 0 for Pie charts
-            //Number - Amount of animation steps
-            animationSteps: 100,
-            //String - Animation easing effect
-            animationEasing: "easeOutBounce",
-            //Boolean - Whether we animate the rotation of the Doughnut
-            animateRotate: true,
-            //Boolean - Whether we animate scaling the Doughnut from the centre
-            animateScale: false,
-            //Boolean - whether to make the chart responsive to window resizing
-            responsive: true,
-            // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-            maintainAspectRatio: false,
-            //String - A legend template
-            legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>",
-            //String - A tooltip template
-            tooltipTemplate: "<%=value %> <%=label%>"
-        };
-        //Create pie or douhnut chart
-        // You can switch between pie and douhnut using the method below.
-        pieChart.Doughnut(PieData, pieOptions);
+    var pieOptions = {
+        //Boolean - Whether we should show a stroke on each segment
+        segmentShowStroke: true,
+        //String - The colour of each segment stroke
+        segmentStrokeColor: "#fff",
+        //Number - The width of each segment stroke
+        segmentStrokeWidth: 1,
+        //Number - The percentage of the chart that we cut out of the middle
+        percentageInnerCutout: 50, // This is 0 for Pie charts
+        //Number - Amount of animation steps
+        animationSteps: 100,
+        //String - Animation easing effect
+        animationEasing: "easeOutBounce",
+        //Boolean - Whether we animate the rotation of the Doughnut
+        animateRotate: true,
+        //Boolean - Whether we animate scaling the Doughnut from the centre
+        animateScale: false,
+        //Boolean - whether to make the chart responsive to window resizing
+        responsive: true,
+        // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+        maintainAspectRatio: false,
+        //String - A legend template
+        legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>",
+        //String - A tooltip template
+        tooltipTemplate: "<%=value %> <%=label%>"
+    };
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    pieChart.Doughnut(PieData, pieOptions);
         //-----------------
         //- END PIE CHART -
         //-----------------

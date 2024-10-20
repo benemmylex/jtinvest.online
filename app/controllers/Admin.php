@@ -18,31 +18,34 @@ class Admin extends CI_Controller
         }
     }
 
-    public function index () {
+    public function index()
+    {
         $data['breadcrumb'] = '
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-users"></i> Users</a></li>
         </ol>
         ';
         $this->load->model('users/Users_model', 'users');
-        $data['style'] = "<link rel='stylesheet' href='".base_url()."assets/plugins/datatables/datatables.min.css'>";
+        $data['style'] = "<link rel='stylesheet' href='" . base_url() . "assets/plugins/datatables/datatables.min.css'>";
         $data['tab'] = "users";
         $data['main_content'] = 'admin/users';
-        $this->load->view('layouts/main',$data);
+        $this->load->view('layouts/main', $data);
     }
 
-    public function transactions () {
+    public function transactions()
+    {
         $data['breadcrumb'] = '
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-exchange"></i> Transaction</a></li>
         </ol>
         ';
-        $data['style'] = "<link rel='stylesheet' href='".base_url()."assets/plugins/datatables/datatables.min.css'>";
+        $data['style'] = "<link rel='stylesheet' href='" . base_url() . "assets/plugins/datatables/datatables.min.css'>";
         $data['tab'] = "transactions";
         $data['main_content'] = 'admin/transactions';
-        $this->load->view('layouts/main',$data);
+        $this->load->view('layouts/main', $data);
     }
-    public function options () {
+    public function options()
+    {
         $data['breadcrumb'] = '
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-gear"></i> Options</a></li>
@@ -50,10 +53,11 @@ class Admin extends CI_Controller
         ';
         $data['tab'] = "options";
         $data['main_content'] = 'admin/options';
-        $this->load->view('layouts/main',$data);
+        $this->load->view('layouts/main', $data);
     }
 
-    public function options_save () {
+    public function options_save()
+    {
         $this->form_validation->set_rules("referral_bonus", "Referral bonus", "trim|numeric");
         $this->form_validation->set_rules("btc_address", "Bitcoin address", "trim");
         $this->form_validation->set_rules("eth_address", "Binance address", "trim");
@@ -64,6 +68,7 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules("account_number", "Account number", "trim");
         $this->form_validation->set_rules("account_type", "Bank branch", "trim");
         $this->form_validation->set_rules("branch", "Branch", "trim");
+        $this->form_validation->set_rules("beneficiary_reference", "Beneficiary reference", "trim|numeric");
 
         //$this->form_validation->set_rules("pm_account", "Perfect Money account number", "trim");
 
@@ -78,21 +83,23 @@ class Admin extends CI_Controller
             $this->Db_model->update("options", ["value" => $this->input->post("account_number")], "WHERE name='account_number'");
             $this->Db_model->update("options", ["value" => $this->input->post("account_type")], "WHERE name='account_type'");
             $this->Db_model->update("options", ["value" => $this->input->post("branch")], "WHERE name='branch'");
-            $this->Db_model->update("options", ["value" => $this->input->post("reference")], "WHERE name='reference'");
+            $this->Db_model->update("options", ["value" => $this->input->post("beneficiary_reference")], "WHERE name='beneficiary_reference'");
             //$this->Db_model->update("options", ["value" => $this->input->post("pm_account")], "WHERE name='pm_account'");
             $this->session->set_flashdata("msg", alert_msg("<i class='fa fa-check-circle'></i> Options updated successfully", "alert-success", 1));
         } else {
             $this->session->set_flashdata("msg", validation_errors());
         }
-        redirect(base_url()."admin/options");
+        redirect(base_url() . "admin/options");
     }
 
-    public function bot_transactions () {
+    public function bot_transactions()
+    {
         $this->Main_model->bot_transaction();
         echo true;
     }
 
-    public function add_bonus () {
+    public function add_bonus()
+    {
         $this->form_validation->set_rules("username", "Username", "required|trim");
         $this->form_validation->set_rules("amount", "Amount", "required|trim");
 
@@ -115,10 +122,11 @@ class Admin extends CI_Controller
         ';
         $data['tab'] = "bonus";
         $data['main_content'] = 'admin/add_bonus';
-        $this->load->view('layouts/main',$data);
+        $this->load->view('layouts/main', $data);
     }
 
-    public function newsletter () {
+    public function newsletter()
+    {
         $this->form_validation->set_rules("receiver", "Receiver", "required|trim");
         $this->form_validation->set_rules("subject", "Subject", "required|trim");
 
@@ -128,8 +136,8 @@ class Admin extends CI_Controller
             $markups = array(
                 "[TEXT]" => $this->input->post("message"),
                 "[BUTTON]" => "<a href='$btn_href'>$btn_text</a>",
-                "[FIRST]" => (empty($this->input->post("name"))) ? "Sir/Madam" : $this->input->post("name"),
-                "[ADDITIONAL_TEXT]" =>  $this->input->post("additional_text")
+                "[NAME]" => (empty($this->input->post("name"))) ? "Sir/Madam" : $this->input->post("name"),
+                "[ADDITIONAL_TEXT]" => $this->input->post("additional_text")
             );
 
             $recipient = rtrim(trim($this->input->post('receiver')), ',');
@@ -145,7 +153,7 @@ class Admin extends CI_Controller
                 if ($success == count($recipient)) {
                     $this->session->set_flashdata('msg', alert_msg("<i class='fa fa-check-circle'></i> Message sent successfully to $success emails", "alert-success", 1));
                 } else if ($success > 0) {
-                    $this->session->set_flashdata('msg', alert_msg("<i class='fa fa-times-circle'></i> Message sent to only $success out of ".count($recipient), "alert-danger", 1));
+                    $this->session->set_flashdata('msg', alert_msg("<i class='fa fa-times-circle'></i> Message sent to only $success out of " . count($recipient), "alert-danger", 1));
                 } else {
                     $this->session->set_flashdata('msg', alert_msg("<i class='fa fa-times-circle'></i> Error sending message. Please try again", "alert-danger", 1));
                 }
@@ -168,7 +176,7 @@ class Admin extends CI_Controller
         $data['style'] = "<link href='https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css' rel='stylesheet'>";
         $data['tab'] = "newsletter";
         $data['main_content'] = 'admin/newsletter';
-        $this->load->view('layouts/main',$data);
+        $this->load->view('layouts/main', $data);
     }
 
 }
