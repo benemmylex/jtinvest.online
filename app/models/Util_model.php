@@ -405,7 +405,7 @@ class Util_model extends CI_Model
 			return array("return" => true, "msg" => "Mail sent successfully to <b>$to</b>");
 		} else {
 			$err = $this->email->print_debugger();
-			//echo ($err);
+			echo ($err);
 			return array("return" => false, "msg" => $err);
 		}
 	}
