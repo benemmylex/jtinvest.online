@@ -364,11 +364,11 @@ class Util_model extends CI_Model
 	{
 		$this->load->library('email');
 		$config = array();
-		$config['protocol'] = 'sendmail';
-		$config['smtp_host'] = 'jtinvest.online';
+		$config['protocol'] = 'smtp';
+		$config['smtp_host'] = 'mail.jtinvest.com';
 		$config['smtp_user'] = 'support-team@jtinvest.online';
 		$config['smtp_pass'] = 'Admin2024.';
-		$config['smtp_port'] = 465;
+		$config['smtp_port'] = 587;
 		$this->email->initialize($config);
 
 		$this->email->set_mailtype($type);
