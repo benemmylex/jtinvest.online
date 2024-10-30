@@ -289,6 +289,8 @@ class Home extends CI_Controller
 
             if (!$this->confirm_password($bank_password)) {
                 $this->session->set_flashdata("msg", alert_msg("<i class='fa fa-times-circle'></i> Incorrect password. Check and try again", "alert-danger", 1));
+            } else if ($bank_amount > $this->General_model->get_balance($this->session->userdata(UID), false)) {
+                $this->session->set_flashdata("msg", alert_msg("<i class='fa fa-times-circle'></i> Insufficient Fund. Fund your wallet and try again", "alert-danger", 1));
             } else {
                 $details = "
                     bank_name:$bank_name::
