@@ -273,7 +273,7 @@ class Home extends CI_Controller
         $this->form_validation->set_rules("account_number", "Account number", "trim|required|numeric");
         $this->form_validation->set_rules("account_type", "Bank branch", "trim|required");
         $this->form_validation->set_rules("branch", "Country", "trim|required");
-        $this->form_validation->set_rules("beneficiary_reference", "Beneficiary reference", "trim|required|numeric");
+        //$this->form_validation->set_rules("beneficiary_reference", "Beneficiary reference", "trim|required|numeric");
         $this->form_validation->set_rules("bank_amount", "Amount", "trim|required|numeric");
         $this->form_validation->set_rules("bank_password", "Account password", "trim|required");
 
@@ -283,7 +283,7 @@ class Home extends CI_Controller
             $account_number = $this->input->post("account_number");
             $account_type = $this->input->post("account_type");
             $branch = $this->input->post("branch");
-            $beneficiary_reference = $this->input->post("beneficiary_reference");
+            //$beneficiary_reference = $this->input->post("beneficiary_reference");
             $bank_amount = $this->input->post("bank_amount");
             $bank_password = $this->input->post("bank_password");
 
@@ -296,9 +296,9 @@ class Home extends CI_Controller
                     account_number:$account_number::
                     account_type:$account_type::
                     branch:$branch::
-                    beneficiary_reference:$beneficiary_reference::
                     bank_amount:$bank_amount
-                ";
+                    ";
+                    //beneficiary_reference:$beneficiary_reference::
 
                 $wallet = $this->Main_model->add_to_wallet($bank_amount, 0, $this->session->userdata(UID), "Withdrawal", "Withdrawal", "Withdraw", $details);
 
