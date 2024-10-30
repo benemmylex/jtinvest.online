@@ -182,6 +182,88 @@
                                         <?php else: ?>
                                         <span class="text-red">Withdrawal is not available at the moment</span>
                                         <?php endif; ?> -->
+                            <div class="panel box box-danger no-border">
+                                <div class="box-header with-border">
+                                    <h4 class="box-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                            Pay To Bank Account
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseFour" class="panel-collapse collapse">
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-md-6 col-lg-6">
+                                                <div class="box no-border">
+                                                    <div class="box-header with-border">
+                                                        <h2 class="box-title">
+                                                            Bank Transfer Form <small> Make sure to fill immediately
+                                                                after payment</small>
+                                                        </h2>
+                                                    </div>
+                                                    <div class="box-body">
+                                                        <div class="col-xs-12">
+                                                            <?php echo form_open(base_url() . "home/book_withdrawal_bank_transfer"); ?>
+                                                            <div class="form-group">
+                                                                <label>Bank name<span class="required">*</span></label>
+                                                                <input class="form-control" name="bank_name"
+                                                                    type="text">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Account number<span
+                                                                        class="required">*</span></label>
+                                                                <input class="form-control" name="account_number"
+                                                                    type="text">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Account name<span
+                                                                        class="required">*</span></label>
+                                                                <input class="form-control" name="account_name">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Account Type<span
+                                                                        class="required">*</span></label>
+                                                                <input class="form-control" name="account_type">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Branch<span class="required">*</span></label>
+                                                                <input class="form-control" name="branch">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Amount<span class="required">*</span></label>
+                                                                <input class="form-control" name="bank_amount"
+                                                                    type="number" step="0.01">
+                                                                <small class="text-muted">Should not be less than 1
+                                                                    USD</small>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Account Password<span
+                                                                        class="required">*</span></label>
+                                                                <input class="form-control" name="bank_password"
+                                                                    type="password">
+                                                            </div>
+                                                            <button class="btn btn-primary btn-flat" type="submit">Book
+                                                                Withdrawal</button>
+                                                            </form>
+                                                        </div>
+                                                        <div class="col-xs-12">
+                                                            <div class="alert alert-info top-2x bottom-2x">
+                                                                <p>Your funded amount will be credited within 12 hours
+                                                                    of booking</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <?php if (date('N') <= 5 && (date('G') >= 12 && date('G') <= 15)): ?>
+                                        <button class="btn btn-primary btn-flat" onclick="withdraw_password($(this),___('usdt-amount'),'USDT',__('usdt-details'),___('usdt-password'))">Book Withdrawal</button>
+                                        <?php else: ?>
+                                        <span class="text-red">Withdrawal is not available at the moment</span>
+                                        <?php endif; ?> -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>-->
